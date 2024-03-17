@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatListModule } from '@angular/material/list';
+import { MaterialModule } from '../../../../material.module';
 @Component({
   selector: 'app-filters',
   standalone: true,
-  imports: [MatExpansionModule, MatListModule],
+  imports: [MaterialModule],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.css',
 })

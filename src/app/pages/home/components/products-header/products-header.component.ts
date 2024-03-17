@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '../../../../material.module';
 @Component({
   selector: 'app-products-header',
   standalone: true,
-  imports: [MatCardModule, MatMenuModule, MatIconModule],
+  imports: [MaterialModule],
   templateUrl: './products-header.component.html',
   styleUrl: './products-header.component.css',
 })
