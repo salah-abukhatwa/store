@@ -1,8 +1,12 @@
 <mat-toolbar class="max-w-12xl mx-auto border-x justify-between">
-  <a routerlink="home">Code with Sloba store</a>
+  <a routerlink="home">ABUKHATWA store</a>
 
   <button mat-icon-button>
-    <mat-icon matBadge="1" matBadgeColor="warn" [mat-menu-trigger-for]="menu"
+    <mat-icon
+      [matBadge]="itemsQuantity"
+      [matBadgeHidden]="!itemsQuantity"
+      matBadgeColor="warn"
+      [mat-menu-trigger-for]="menu"
       >shopping_cart</mat-icon
     >
   </button>
@@ -10,29 +14,27 @@
   <mat-menu #menu="matMenu">
     <div class="p-3 divide-y divide-solid">
       <div class="pb-3 flex justify-between">
-        <span class="mr-16">1 items</span>
+        <span class="mr-16">{{ itemsQuantity }} items</span>
         <a routerLink="cart">View Cart</a>
       </div>
-      <div class="py-3">
-        <div class="flex justify-between font-light mb-2">
-          Keyboard x 1
-          <span class="font-bold">{{ "150" + "$" }}</span>
-        </div>
-        <div class="flex justify-between font-light mb-2">
-          Keyboard x 1
-          <span class="font-bold">{{ "150" + "$" }}</span>
-        </div>
-        <div class="flex justify-between font-light mb-2">
-          Keyboard x 1
-          <span class="font-bold">{{ "150" + "$" }}</span>
+      <div *ngIf="cart.items.length" class="py-3">
+        <div
+          *ngFor="let item of cart.items"
+          class="flex justify-between font-light mb-2"
+        >
+          {{ item.name }} x {{ item.quantity }}
+          <span class="font-bold">{{ item.price | currency }}</span>
         </div>
       </div>
       <div class="flex justify-between py-3 font-light">
         Total:
-        <span class="font-bold">{{ "450" + "$" }}</span>
+        <span class="font-bold">{{ getTotal(cart.items) | currency }}</span>
       </div>
       <div class="pt-3 flex justify-between">
-        <button class="bg-rose-600 text-white rounded-full w-9 h-9">
+        <button
+          (click)="onClearCart()"
+          class="bg-rose-600 text-white rounded-full w-9 h-9"
+        >
           <mat-icon>remove_shopping_cart</mat-icon>
         </button>
         <button
