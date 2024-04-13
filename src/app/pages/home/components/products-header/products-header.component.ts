@@ -9,16 +9,21 @@ import { MaterialModule } from '../../../../material.module';
 })
 export class ProductsHeaderComponent {
   @Output() columsCountChange = new EventEmitter<number>();
+  @Output() itemsCountChange = new EventEmitter<number>();
+  @Output() sortChange = new EventEmitter<string>();
   sortByMenu: any;
   sort = 'desc';
   itemsShowCount = 12;
 
   onSortUpdated(newSort: string): void {
     this.sort = newSort;
+
+    this.sortChange.emit(newSort);
   }
 
   onItemsUpdated(count: number): void {
     this.itemsShowCount = count;
+    this.itemsCountChange.emit(count);
   }
 
   onColumsUpdated(colsNum: number): void {

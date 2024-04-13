@@ -4,9 +4,9 @@
     <mat-panel-title>CATEGORIES</mat-panel-title>
   </mat-expansion-panel-header>
   <mat-selection-list [multiple]="false">
-    @for (catigore of catigores; track catigore ){
+    @for (catigory of catigores; track catigory ){
     <mat-list-option>
-      <button (click)="onShowCategory(catigore)">{{ catigore }}</button>
+      <button (click)="onShowCategory(catigory)">{{ catigory }}</button>
     </mat-list-option>
     }
   </mat-selection-list>
